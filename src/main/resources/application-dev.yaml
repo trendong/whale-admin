@@ -1,0 +1,131 @@
+server:
+  port: 21002
+
+spring:
+  servlet:
+    # （上传请求｜上传文件）大小
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+  # 数据源配置
+  datasource:
+    dynamic:
+      hikari:
+        # 用于测试连接是否可用的查询语句
+        connection-test-query: SELECT 1
+        # 连接超时时间：毫秒，小于250毫秒，否则被重置为默认值30秒
+        connection-timeout: 60000
+        # 空闲连接超时时间，默认值600000（10分钟），大于等于max-lifetime且max-lifetime>0，会被重置为0；不等于0且小于10秒，会被重置为10秒
+        idle-timeout: 500000
+        # 连接最大存活时间，不等于0且小于30秒，会被重置为默认值30分钟.设置应该比mysql设置的超时时间短
+        max-lifetime: 540000
+        # 最大连接数，小于等于0会被重置为默认值10；大于零小于1会被重置为minimum-idle的值
+        maximum-pool-size: 20
+        # 最小空闲连接，默认值10，小于0或大于maximum-pool-size，都会重置为maximum-pool-size
+        minimum-idle: 10
+      # 指定主库（默认master）
+      primary: master
+      datasource:
+        master:
+          name: whale-admin
+          url: jdbc:mysql://192.168.2.14:3306/whale-admin
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: db-test
+          password: 123456
+        # 模拟从库，可根据自己需要修改
+        slave_1:
+          name: whale-web
+          url: jdbc:mysql://192.168.2.14:3306/whale-web
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: db-test
+          password: 123456
+        slave_2:
+          name: whale-dev
+          url: jdbc:mysql://192.168.2.14:3306/whale-dev
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: db-test
+          password: 123456
+
+  # redis配置
+  redis:
+    port: 6379
+    host: 192.168.2.12
+    password: 123456
+  # RabbitMQ 配置项，对应 RabbitProperties 配置类
+  rabbitmq:
+    host: 192.168.2.14
+    port: 5672
+    username: 36krplus
+    password: 36krplus
+  data:
+    # mongodb配置
+    mongodb:
+      host: 192.168.2.14
+      port: 27017
+      database: krplus
+      authentication-database: admin
+    # elasticsearch配置
+    elasticsearch:
+      client:
+        reactive:
+          endpoints: 192.168.2.13:9200
+          username: elasticsearch_36kr_test
+          password:
+  # 邮箱配置
+  mail:
+    host: smtp.qq.com
+    username: 1561826175@qq.com
+    password: klxelkyqzklyibdd
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  # 配置默认线程池
+  task:
+    execution:
+      pool:
+        # 线程池创建时的初始化线程数，默认为8
+        core-size: 2
+        # 线程池的最大线程数，默认为int最大值
+        max-size: 5
+        # 用来缓冲执行任务的队列，默认为int最大值
+        queue-capacity: 10
+        # 线程终止前允许保持空闲的时间
+        keep-alive: 60s
+        # 是否允许核心线程超时
+        allow-core-thread-timeout: true
+      shutdown:
+        # 是否等待剩余任务完成后才关闭应用
+        await-termination: false
+        # 等待剩余任务完成的最大时间
+        await-termination-period:
+      # 线程名的前缀，设置之后方便在日志中查看处理任务所在的线程池
+      thread-name-prefix: task-
+
+# 日志
+#logging:
+#  level:
+#    # sql 日志
+#    sql: DEBUG
+#    # 业务日志配置
+#    com:
+#      whale:
+#        admin:
+#          web:
+#            controller: DEBUG
+#    org:
+#      springframework:
+#        # 服务启动日志-请求路径列表打印
+#        web:
+#          servlet:
+#            mvc:
+#              method:
+#                annotation:
+#                  RequestMappingHandlerMapping: trace
+#        data:
+#          # 打印 mongodb 操作的具体语句 生产环境下，不建议开启
+#          mongodb:
+#            core: DEBUG
