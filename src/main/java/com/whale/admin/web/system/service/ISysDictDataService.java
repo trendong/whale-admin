@@ -7,6 +7,7 @@ import com.whale.framework.repository.common.vo.system.dict.SysDictDataExportReq
 import com.whale.framework.repository.common.vo.system.dict.SysDictDataPageReqVO;
 import com.whale.framework.repository.model.krplus.SysDictData;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -76,5 +77,20 @@ public interface ISysDictDataService {
      * @return 数据数量
      */
     Long countByDictType(String dictType);
+
+    /**
+     * 判断数据库中是否有更新的字典数据
+     *
+     * @param maxUpdateTime 最新修改时间
+     * @return 数据数量
+     */
+    boolean selectExistsByUpdateTimeAfter(Date maxUpdateTime);
+
+    /**
+     * 获得字典数据列表
+     *
+     * @return 字典数据列表
+     */
+    List<SysDictData> selectList();
 
 }

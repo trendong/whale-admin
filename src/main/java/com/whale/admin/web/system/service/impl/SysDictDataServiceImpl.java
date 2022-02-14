@@ -122,6 +122,16 @@ public class SysDictDataServiceImpl implements ISysDictDataService {
         return dictDataMapper.selectCountByDictType(dictType);
     }
 
+    @Override
+    public boolean selectExistsByUpdateTimeAfter(Date maxUpdateTime) {
+        return dictDataMapper.selectExistsByUpdateTimeAfter(maxUpdateTime);
+    }
+
+    @Override
+    public List<SysDictData> selectList() {
+        return dictDataMapper.selectList();
+    }
+
     private void checkCreateOrUpdate(Long id, String value, String dictType) {
         // 校验自己存在
         checkDictDataExists(id);
