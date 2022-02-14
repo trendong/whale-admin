@@ -1,4 +1,4 @@
-package com.whale.admin.web.system.vo;
+package com.whale.admin.web.system.vo.role;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

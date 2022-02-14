@@ -1,4 +1,4 @@
-package com.whale.admin.web.system.enums;
+package com.whale.admin.web.system.enums.system;
 
 /**
  * System 字典类型的枚举类

@@ -1,21 +1,21 @@
 package com.whale.admin.web.system.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.google.common.annotations.VisibleForTesting;
 import com.whale.admin.web.system.convert.SysRoleConvert;
-import com.whale.admin.web.system.enums.SysRoleTypeEnum;
-import com.whale.admin.web.system.vo.SysRoleCreateReqVO;
-import com.whale.admin.web.system.vo.SysRoleUpdateReqVO;
+import com.whale.admin.web.system.enums.system.RoleCodeEnum;
+import com.whale.admin.web.system.enums.system.SysRoleTypeEnum;
+import com.whale.admin.web.system.vo.role.SysRoleCreateReqVO;
+import com.whale.admin.web.system.vo.role.SysRoleUpdateReqVO;
 import com.whale.admin.web.system.service.ISysRoleService;
 import com.whale.framework.common.enums.CommonStatusEnum;
 import com.whale.framework.repository.common.exception.util.ServiceExceptionUtil;
 import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.system.SysRoleExportReqVO;
-import com.whale.framework.repository.common.vo.system.SysRolePageReqVO;
+import com.whale.framework.repository.common.vo.system.role.SysRoleExportReqVO;
+import com.whale.framework.repository.common.vo.system.role.SysRolePageReqVO;
 import com.whale.framework.repository.mapper.krplus.SysRoleMapper;
 import com.whale.framework.repository.model.krplus.SysRole;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,9 +23,11 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
-import static com.whale.admin.web.system.enums.SysErrorCodeConstants.*;
+import static com.whale.admin.web.system.enums.system.SysErrorCodeConstants.*;
 
 
 @Service
@@ -143,6 +145,43 @@ public class SysRoleServiceImpl implements ISysRoleService {
         if (role != null && !role.getId().equals(id)) {
             throw ServiceExceptionUtil.exception(ROLE_CODE_DUPLICATE, code);
         }
+    }
+
+    @Override
+    public SysRole getRoleFromCache(Long id) {
+        return null;
+    }
+
+    @Override
+    public List<SysRole> getRolesFromCache(Collection<Long> ids) {
+        if (CollectionUtil.isEmpty(ids)) {
+            return Collections.emptyList();
+        }
+        return null;
+//        return roleCache.values().stream().filter(roleDO -> ids.contains(roleDO.getId()))
+//                .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean hasAnyAdmin(Collection<SysRole> roleList) {
+        if (CollectionUtil.isEmpty(roleList)) {
+            return false;
+        }
+        return roleList.stream().anyMatch(roleDO -> RoleCodeEnum.ADMIN.getKey().equals(roleDO.getCode()));
+    }
+
+    @Override
+    public void updateRoleDataScope(Long id, Integer dataScope, Set<Long> dataScopeDeptIds) {
+        // 校验是否可以更新
+        checkUpdateRole(id);
+        // 更新数据范围
+        SysRole updateObject = new SysRole();
+        updateObject.setId(id);
+        updateObject.setDataScope(dataScope);
+        updateObject.setDataScopeDeptIds(dataScopeDeptIds);
+        roleMapper.updateById(updateObject);
+        // 发送刷新消息
+//        roleProducer.sendRoleRefreshMessage();
     }
 
 }

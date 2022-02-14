@@ -1,4 +1,4 @@
-package com.whale.admin.web.system.enums;
+package com.whale.admin.web.system.enums.system;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

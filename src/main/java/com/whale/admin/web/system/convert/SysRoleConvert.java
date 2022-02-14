@@ -1,6 +1,6 @@
 package com.whale.admin.web.system.convert;
 
-import com.whale.admin.web.system.vo.*;
+import com.whale.admin.web.system.vo.role.*;
 import com.whale.framework.repository.model.krplus.SysRole;
 import org.mapstruct.Mapper;
 import java.util.List;
