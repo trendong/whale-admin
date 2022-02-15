@@ -19,6 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <lombok.version>1.18.12</lombok.version>
+        <whale.biz.dict.version>1.0-SNAPSHOT</whale.biz.dict.version>
         <whale.framework.plus.version>1.0-SNAPSHOT</whale.framework.plus.version>
         <easyexcel.verion>2.2.7</easyexcel.verion>
         <skywalking.version>8.7.0</skywalking.version>
@@ -54,6 +55,12 @@
 
         <dependency>
             <groupId>com.whale</groupId>
+            <artifactId>whale-spring-boot-starter-biz-dict</artifactId>
+            <version>${whale.biz.dict.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.whale</groupId>
             <artifactId>whale-framework-plus</artifactId>
             <version>${whale.framework.plus.version}</version>
         </dependency>
@@ -67,19 +74,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <!--<exclusions>
-                &lt;!&ndash; 去掉对 spring-boot-starter-logging 的依赖&ndash;&gt;
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>-->
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -150,11 +145,6 @@
             <groupId>com.spring4all</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
             <version>2.0.1.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
 
         <dependency>

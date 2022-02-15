@@ -1,14 +1,13 @@
-package com.whale.admin.web.system.service.impl;
+package com.whale.admin.config.dict.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.google.common.collect.ImmutableTable;
 import com.whale.admin.WhaleAdminApplication;
-import com.whale.admin.excel.dto.DictDataRespDTO;
-import com.whale.admin.excel.service.ISysDictDataCoreService;
-import com.whale.admin.web.system.convert.dict.SysDictDataCoreConvert;
+import com.whale.admin.config.dict.convert.SysDictDataCoreConvert;
+import com.whale.admin.config.dict.service.ISysDictDataCoreService;
 import com.whale.admin.web.system.service.ISysDictDataService;
-import com.whale.framework.repository.mapper.krplus.custom.SysDictDataCoreMapper;
+import com.whale.framework.dict.dto.DictDataRespDTO;
 import com.whale.framework.repository.model.krplus.SysDictData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,11 +80,6 @@ public class SysDictDataCoreServiceImpl implements ISysDictDataCoreService {
         assert dataList.size() > 0; // 断言，避免告警
         maxUpdateTime = dataList.stream().max(Comparator.comparing(SysDictData::getUpdateTime)).get().getUpdateTime();
         logger.info("[initLocalCache][缓存字典数据，数量为:{}]", dataList.size());
-    }
-
-    @Override
-    public List<SysDictData> selectList() {
-        return iSysDictDataService.selectList();
     }
 
     @Scheduled(fixedDelay = SCHEDULER_PERIOD, initialDelay = SCHEDULER_PERIOD)

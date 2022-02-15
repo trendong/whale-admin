@@ -1,6 +1,9 @@
 package com.whale.admin.web.system.vo.role;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.whale.admin.excel.annotations.DictFormat;
+import com.whale.admin.excel.core.DictConvert;
+import com.whale.admin.web.system.enums.system.SysDictTypeConstants;
 import lombok.Data;
 
 /**
@@ -24,9 +27,8 @@ public class SysRoleExcelVO {
     @ExcelProperty("数据范围")
     private Integer dataScope;
 
-//    @ExcelProperty(value = "角色状态", converter = DictConvert.class)
-//    @DictFormat(SysDictTypeConstants.COMMON_STATUS)
-    @ExcelProperty(value = "角色状态")
+    @ExcelProperty(value = "角色状态", converter = DictConvert.class)
+    @DictFormat(SysDictTypeConstants.COMMON_STATUS)
     private String status;
 
 }

@@ -1,13 +1,11 @@
-package com.whale.admin.excel.service;
+package com.whale.admin.config.dict.service;
 
-import com.whale.framework.repository.model.krplus.SysDictData;
-
-import java.util.List;
+import com.whale.framework.dict.service.DictDataFrameworkService;
 
 /**
  * 字典数据 Service 接口
  *
- * @author 芋道源码
+ * @author trendong
  */
 public interface ISysDictDataCoreService extends DictDataFrameworkService {
 
@@ -15,7 +13,5 @@ public interface ISysDictDataCoreService extends DictDataFrameworkService {
      * 初始化字典数据的本地缓存
      */
     void initLocalCache();
-
-    List<SysDictData> selectList();
 
 }
