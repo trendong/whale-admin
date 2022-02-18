@@ -19,6 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <lombok.version>1.18.12</lombok.version>
+        <whale.biz.operatelog.version>1.0-SNAPSHOT</whale.biz.operatelog.version>
         <whale.biz.dict.version>1.0-SNAPSHOT</whale.biz.dict.version>
         <whale.framework.plus.version>1.0-SNAPSHOT</whale.framework.plus.version>
         <easyexcel.verion>2.2.7</easyexcel.verion>
@@ -57,6 +58,12 @@
             <groupId>com.whale</groupId>
             <artifactId>whale-spring-boot-starter-biz-dict</artifactId>
             <version>${whale.biz.dict.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.whale</groupId>
+            <artifactId>whale-spring-boot-stater-biz-operatelog</artifactId>
+            <version>${whale.biz.operatelog.version}</version>
         </dependency>
 
         <dependency>

@@ -7,7 +7,7 @@ import com.whale.admin.WhaleAdminApplication;
 import com.whale.admin.config.dict.convert.SysDictDataCoreConvert;
 import com.whale.admin.config.dict.service.ISysDictDataCoreService;
 import com.whale.admin.web.system.service.ISysDictDataService;
-import com.whale.framework.dict.dto.DictDataRespDTO;
+import com.whale.framework.dict.core.dto.DictDataRespDTO;
 import com.whale.framework.repository.model.krplus.SysDictData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

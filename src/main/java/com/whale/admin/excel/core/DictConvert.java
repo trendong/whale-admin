@@ -7,8 +7,8 @@ import com.alibaba.excel.metadata.CellData;
 import com.alibaba.excel.metadata.GlobalConfiguration;
 import com.alibaba.excel.metadata.property.ExcelContentProperty;
 import com.whale.admin.excel.annotations.DictFormat;
-import com.whale.framework.dict.dto.DictDataRespDTO;
-import com.whale.framework.dict.util.DictFrameworkUtils;
+import com.whale.framework.dict.core.dto.DictDataRespDTO;
+import com.whale.framework.dict.core.util.DictFrameworkUtils;
 import lombok.extern.slf4j.Slf4j;
 
 /**

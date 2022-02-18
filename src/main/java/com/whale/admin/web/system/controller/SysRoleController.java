@@ -7,6 +7,7 @@ import com.whale.admin.web.system.service.ISysRoleService;
 import com.whale.admin.web.system.vo.role.*;
 import com.whale.framework.common.enums.CommonStatusEnum;
 import com.whale.framework.common.util.json.JsonUtils;
+import com.whale.framework.operatelog.core.annotations.OperateLog;
 import com.whale.framework.repository.common.vo.CommonResult;
 import com.whale.framework.repository.common.vo.PageResult;
 import com.whale.framework.repository.common.vo.system.role.SysRoleExportReqVO;
@@ -31,6 +32,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.whale.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
 import static com.whale.framework.repository.common.vo.CommonResult.success;
 
 @Api(tags = "角色")
@@ -102,7 +104,7 @@ public class SysRoleController {
     }
 
     @GetMapping("/export")
-//    @OperateLog(type = EXPORT)
+    @OperateLog(type = EXPORT)
 //    @PreAuthorize("@ss.hasPermission('system:role:export')")
     public void export(HttpServletResponse response, @Validated SysRoleExportReqVO reqVO) throws IOException {
         List<SysRole> list = iSysRoleService.getRoles(reqVO);

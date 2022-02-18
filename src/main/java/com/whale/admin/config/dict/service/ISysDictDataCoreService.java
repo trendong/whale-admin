@@ -1,6 +1,7 @@
 package com.whale.admin.config.dict.service;
 
-import com.whale.framework.dict.service.DictDataFrameworkService;
+
+import com.whale.framework.dict.core.service.DictDataFrameworkService;
 
 /**
  * 字典数据 Service 接口

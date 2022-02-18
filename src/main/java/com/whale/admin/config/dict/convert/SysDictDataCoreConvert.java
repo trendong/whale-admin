@@ -1,6 +1,6 @@
 package com.whale.admin.config.dict.convert;
 
-import com.whale.framework.dict.dto.DictDataRespDTO;
+import com.whale.framework.dict.core.dto.DictDataRespDTO;
 import com.whale.framework.repository.model.krplus.SysDictData;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
