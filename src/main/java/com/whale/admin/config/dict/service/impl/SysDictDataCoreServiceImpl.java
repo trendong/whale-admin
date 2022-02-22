@@ -26,7 +26,6 @@ import java.util.List;
  * @author trendong
  */
 @Service
-@DS("slave_2")
 public class SysDictDataCoreServiceImpl implements ISysDictDataCoreService {
 
     private static Logger logger = LoggerFactory.getLogger(WhaleAdminApplication.class);

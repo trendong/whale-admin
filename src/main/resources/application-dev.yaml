@@ -28,7 +28,7 @@ spring:
       datasource:
         master:
           name: whale-admin
-          url: jdbc:mysql://192.168.2.14:3306/whale-admin
+          url: jdbc:mysql://192.168.2.14:3306/whale-dev
           driver-class-name: com.mysql.cj.jdbc.Driver
           username: db-test
           password: 123456
@@ -41,7 +41,7 @@ spring:
           password: 123456
         slave_2:
           name: whale-dev
-          url: jdbc:mysql://192.168.2.14:3306/whale-dev
+          url: jdbc:mysql://192.168.2.14:3306/whale-admin
           driver-class-name: com.mysql.cj.jdbc.Driver
           username: db-test
           password: 123456

@@ -21,7 +21,6 @@ import javax.annotation.Resource;
 import java.util.*;
 
 @Service
-@DS("slave_2")
 public class SysPermissionServiceImpl implements ISysPermissionService {
 
     @Resource

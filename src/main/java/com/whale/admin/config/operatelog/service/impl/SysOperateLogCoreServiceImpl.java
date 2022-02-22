@@ -21,7 +21,6 @@ import static com.whale.framework.common.constant.WhaleConstants.JAVA_METHOD_ARG
 import static com.whale.framework.common.constant.WhaleConstants.RESULT_MAX_LENGTH;
 
 @Service
-@DS("slave_2")
 public class SysOperateLogCoreServiceImpl implements ISysOperateLogCoreService {
 
     private static Logger logger = LoggerFactory.getLogger(WhaleAdminApplication.class);

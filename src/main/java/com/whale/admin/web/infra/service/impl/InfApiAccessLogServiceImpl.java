@@ -22,7 +22,6 @@ import java.util.List;
  */
 @Service
 @Validated
-@DS("slave_2")
 public class InfApiAccessLogServiceImpl implements InfApiAccessLogService {
 
     @Resource

@@ -26,7 +26,6 @@ import static com.whale.framework.common.exception.util.ServiceExceptionUtil.exc
  */
 @Service
 @Validated
-@DS("slave_2")
 public class InfApiErrorLogServiceImpl implements InfApiErrorLogService {
 
     @Resource

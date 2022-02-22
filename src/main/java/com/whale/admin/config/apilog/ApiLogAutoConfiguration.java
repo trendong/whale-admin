@@ -1,6 +1,7 @@
 package com.whale.admin.config.apilog;
 
 import com.whale.admin.config.WebAutoConfiguration;
+import com.whale.admin.config.WebProperties;
 import com.whale.admin.config.apilog.service.InfApiAccessLogCoreService;
 import com.whale.admin.filter.ApiAccessLogFilter;
 import com.whale.framework.common.enums.WebFilterOrderEnum;
@@ -20,9 +21,10 @@ public class ApiLogAutoConfiguration {
      * 创建 ApiAccessLogFilter Bean，记录 API 请求日志
      */
     @Bean
-    public FilterRegistrationBean<ApiAccessLogFilter> apiAccessLogFilter(@Value("${spring.application.name}") String applicationName,
+    public FilterRegistrationBean<ApiAccessLogFilter> apiAccessLogFilter(WebProperties webProperties,
+                                                                         @Value("${spring.application.name}") String applicationName,
                                                                          InfApiAccessLogCoreService infApiAccessLogCoreService) {
-        ApiAccessLogFilter filter = new ApiAccessLogFilter(applicationName, infApiAccessLogCoreService);
+        ApiAccessLogFilter filter = new ApiAccessLogFilter(webProperties, applicationName, infApiAccessLogCoreService);
         return createFilterBean(filter, WebFilterOrderEnum.API_ACCESS_LOG_FILTER);
     }
 

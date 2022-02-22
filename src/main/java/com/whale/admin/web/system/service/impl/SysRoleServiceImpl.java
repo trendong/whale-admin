@@ -31,7 +31,6 @@ import static com.whale.admin.web.system.enums.SysErrorCodeConstants.*;
 
 
 @Service
-@DS("slave_2")
 public class SysRoleServiceImpl implements ISysRoleService {
 
     @Resource

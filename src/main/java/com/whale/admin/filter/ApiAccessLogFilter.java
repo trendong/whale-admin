@@ -3,6 +3,7 @@ package com.whale.admin.filter;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.extra.servlet.ServletUtil;
+import com.whale.admin.config.WebProperties;
 import com.whale.admin.config.apilog.service.InfApiAccessLogCoreService;
 import com.whale.admin.config.apilog.service.dto.ApiAccessLogCreateReqDTO;
 import com.whale.framework.common.exception.enums.GlobalErrorCodeConstants;
@@ -34,6 +35,7 @@ public class ApiAccessLogFilter extends OncePerRequestFilter {
 
     private final static Logger logger = LoggerFactory.getLogger(ApiAccessLogFilter.class);
 
+    private final WebProperties webProperties;
     private final String applicationName;
 
     private final InfApiAccessLogCoreService infApiAccessLogCoreService;
@@ -41,7 +43,7 @@ public class ApiAccessLogFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         // 只过滤 API 请求的地址
-        return !request.getRequestURI().startsWith("/api");
+        return !request.getRequestURI().startsWith(webProperties.getApiPrefix());
     }
 
     @Override

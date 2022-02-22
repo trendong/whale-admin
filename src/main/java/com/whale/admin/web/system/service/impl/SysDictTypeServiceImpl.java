@@ -26,7 +26,6 @@ import static com.whale.framework.repository.common.exception.util.ServiceExcept
  * @author trendong
  */
 @Service
-@DS("slave_2")
 public class SysDictTypeServiceImpl implements ISysDictTypeService {
 
     @Resource

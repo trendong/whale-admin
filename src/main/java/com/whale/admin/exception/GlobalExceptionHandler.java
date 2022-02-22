@@ -1,6 +1,7 @@
 package com.whale.admin.exception;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.whale.admin.config.apilog.service.InfApiErrorLogCoreService;
 import com.whale.admin.config.apilog.service.dto.ApiErrorLogCreateReqDTO;
@@ -33,6 +34,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 import java.nio.file.AccessDeniedException;
 import java.util.Date;
+import java.util.Map;
 
 import static com.whale.framework.repository.common.exception.enums.GlobalErrorCodeConstants.*;
 
@@ -274,10 +276,10 @@ public class GlobalExceptionHandler {
         errorLog.setTraceId(TracerUtils.getTraceId());
         errorLog.setApplicationName(applicationName);
         errorLog.setRequestUrl(request.getRequestURI());
-//        Map<String, Object> requestParams = MapUtil.<String, Object>builder()
-//                .put("query", ServletUtil.getParamMap(request))
-//                .put("body", ServletUtil.getBody(request)).build();
-//        errorLog.setRequestParams(JsonUtils.toJsonString(requestParams));
+        Map<String, Object> requestParams = MapUtil.<String, Object> builder()
+                .put("query", ServletUtil.getParamMap(request))
+                .put("body", ServletUtil.getBody(request)).build();
+        errorLog.setRequestParams(JsonUtils.toJsonString(requestParams));
         errorLog.setRequestMethod(request.getMethod());
         errorLog.setUserAgent(ServletUtils.getUserAgent(request));
         errorLog.setUserIp(ServletUtil.getClientIP(request));

@@ -27,7 +27,6 @@ import static com.whale.admin.web.system.enums.SysErrorCodeConstants.*;
  * @author trendong
  */
 @Service
-@DS("slave_2")
 public class SysMenuServiceImpl implements ISysMenuService {
 
     @Resource

@@ -16,6 +16,16 @@ management:
         # 在 include 的基础上，需要排除的端点。通过设置 * ，可以排除所有端点。
         exclude:
 
+# 自定义配置
+whale:
+  web:
+    api-prefix: /api
+    controller-package: com.whale.admin.web
+  xss:
+    enable: true
+    exclude-urls: # 如下url做为演示，去掉配置也没关系
+      - ${management.endpoints.web.base-path}/** # 不处理 Actuator 的请求
+
 # swagger?http://127.0.0.1:21002/swagger-ui/index.html?
 springfox:
   documentation:

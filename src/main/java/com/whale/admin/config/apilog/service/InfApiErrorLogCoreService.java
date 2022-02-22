@@ -8,7 +8,7 @@ import javax.validation.Valid;
 /**
  * API 错误日志 Service 接口
  *
- * @author 芋道源码
+ * @author trendong
  */
 public interface InfApiErrorLogCoreService {
 
