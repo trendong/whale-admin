@@ -1,4 +1,4 @@
-package com.whale.admin.web.infra.enums;
+package com.whale.admin.config.apilog.service.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

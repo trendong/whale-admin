@@ -1,6 +1,6 @@
-package com.whale.admin.web.infra.convert;
+package com.whale.admin.config.apilog.service.convert;
 
-import com.whale.admin.web.infra.dto.ApiErrorLogCreateReqDTO;
+import com.whale.admin.config.apilog.service.dto.ApiErrorLogCreateReqDTO;
 import com.whale.framework.repository.model.krplus.InfApiErrorLog;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

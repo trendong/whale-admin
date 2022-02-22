@@ -1,7 +1,7 @@
 package com.whale.admin.config;
 
+import com.whale.admin.config.apilog.service.InfApiErrorLogCoreService;
 import com.whale.admin.exception.GlobalExceptionHandler;
-import com.whale.admin.web.infra.service.InfApiErrorLogService;
 import com.whale.framework.common.enums.WebFilterOrderEnum;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -33,8 +33,8 @@ public class WebAutoConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    public GlobalExceptionHandler globalExceptionHandler(InfApiErrorLogService infApiErrorLogService) {
-        return new GlobalExceptionHandler(applicationName, infApiErrorLogService);
+    public GlobalExceptionHandler globalExceptionHandler(InfApiErrorLogCoreService infApiErrorLogCoreService) {
+        return new GlobalExceptionHandler(applicationName, infApiErrorLogCoreService);
     }
 
     /**

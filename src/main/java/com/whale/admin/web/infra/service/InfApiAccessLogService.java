@@ -1,6 +1,5 @@
 package com.whale.admin.web.infra.service;
 
-import com.whale.admin.web.infra.dto.ApiAccessLogCreateReqDTO;
 import com.whale.framework.repository.common.vo.PageResult;
 import com.whale.framework.repository.common.vo.infra.apiaccesslog.InfApiAccessLogExportReqVO;
 import com.whale.framework.repository.common.vo.infra.apiaccesslog.InfApiAccessLogPageReqVO;
@@ -31,10 +30,4 @@ public interface InfApiAccessLogService {
      */
     List<InfApiAccessLog> getApiAccessLogList(InfApiAccessLogExportReqVO exportReqVO);
 
-    /**
-     * 创建 API 访问日志
-     *
-     * @param createDTO 创建信息
-     */
-    void createApiAccessLogAsync(ApiAccessLogCreateReqDTO createDTO);
 }

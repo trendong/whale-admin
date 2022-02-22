@@ -1,4 +1,4 @@
-package com.whale.admin.web.infra.dto;
+package com.whale.admin.config.apilog.service.dto;
 
 import lombok.Data;
 

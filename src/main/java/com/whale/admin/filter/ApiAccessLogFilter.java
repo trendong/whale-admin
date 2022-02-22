@@ -3,8 +3,8 @@ package com.whale.admin.filter;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.extra.servlet.ServletUtil;
-import com.whale.admin.web.infra.dto.ApiAccessLogCreateReqDTO;
-import com.whale.admin.web.infra.service.InfApiAccessLogService;
+import com.whale.admin.config.apilog.service.InfApiAccessLogCoreService;
+import com.whale.admin.config.apilog.service.dto.ApiAccessLogCreateReqDTO;
 import com.whale.framework.common.exception.enums.GlobalErrorCodeConstants;
 import com.whale.framework.common.pojo.CommonResult;
 import com.whale.framework.common.util.date.DateUtils;
@@ -36,7 +36,7 @@ public class ApiAccessLogFilter extends OncePerRequestFilter {
 
     private final String applicationName;
 
-    private final InfApiAccessLogService infApiAccessLogService;
+    private final InfApiAccessLogCoreService infApiAccessLogCoreService;
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
@@ -70,7 +70,7 @@ public class ApiAccessLogFilter extends OncePerRequestFilter {
         ApiAccessLogCreateReqDTO accessLog = new ApiAccessLogCreateReqDTO();
         try {
             this.buildApiAccessLogDTO(accessLog, request, beginTime, queryString, requestBody, ex);
-            infApiAccessLogService.createApiAccessLogAsync(accessLog);
+            infApiAccessLogCoreService.createApiAccessLogAsync(accessLog);
         } catch (Throwable th) {
             logger.error("[createApiAccessLog][url({}) log({}) 发生异常]", request.getRequestURI(), JsonUtils.toJsonString(accessLog), th);
         }

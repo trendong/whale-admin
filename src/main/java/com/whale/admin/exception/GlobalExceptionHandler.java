@@ -2,8 +2,8 @@ package com.whale.admin.exception;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.extra.servlet.ServletUtil;
-import com.whale.admin.web.infra.dto.ApiErrorLogCreateReqDTO;
-import com.whale.admin.web.infra.service.InfApiErrorLogService;
+import com.whale.admin.config.apilog.service.InfApiErrorLogCoreService;
+import com.whale.admin.config.apilog.service.dto.ApiErrorLogCreateReqDTO;
 import com.whale.framework.common.util.json.JsonUtils;
 import com.whale.framework.common.util.monitor.TracerUtils;
 import com.whale.framework.common.util.servlet.ServletUtils;
@@ -49,7 +49,7 @@ public class GlobalExceptionHandler {
 
     private final String applicationName;
 
-    private final InfApiErrorLogService infApiErrorLogService;
+    private final InfApiErrorLogCoreService infApiErrorLogCoreService;
 
     /**
      * 处理所有异常，主要是提供给 Filter 使用
@@ -248,7 +248,7 @@ public class GlobalExceptionHandler {
             // 初始化 errorLog
             initExceptionLog(errorLog, req, e);
             // 执行插入 errorLog
-            infApiErrorLogService.createApiErrorLogAsync(errorLog);
+            infApiErrorLogCoreService.createApiErrorLogAsync(errorLog);
         } catch (Throwable th) {
             logger.error("[createExceptionLog][url({}) log({}) 发生异常]", req.getRequestURI(),  JsonUtils.toJsonString(errorLog), th);
         }

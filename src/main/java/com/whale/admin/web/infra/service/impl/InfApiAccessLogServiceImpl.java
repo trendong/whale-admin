@@ -1,8 +1,7 @@
 package com.whale.admin.web.infra.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
-import com.whale.admin.web.infra.convert.InfApiAccessLogCoreConvert;
-import com.whale.admin.web.infra.dto.ApiAccessLogCreateReqDTO;
+import com.whale.admin.config.apilog.service.convert.InfApiAccessLogCoreConvert;
 import com.whale.admin.web.infra.service.InfApiAccessLogService;
 import com.whale.framework.repository.common.vo.PageResult;
 import com.whale.framework.repository.common.vo.infra.apiaccesslog.InfApiAccessLogExportReqVO;
@@ -37,13 +36,6 @@ public class InfApiAccessLogServiceImpl implements InfApiAccessLogService {
     @Override
     public List<InfApiAccessLog> getApiAccessLogList(InfApiAccessLogExportReqVO exportReqVO) {
         return apiAccessLogMapper.selectList(exportReqVO);
-    }
-
-    @Override
-    @Async
-    public void createApiAccessLogAsync(ApiAccessLogCreateReqDTO createDTO) {
-        InfApiAccessLog apiAccessLog = InfApiAccessLogCoreConvert.INSTANCE.convert(createDTO);
-        apiAccessLogMapper.insert(apiAccessLog);
     }
 
 }

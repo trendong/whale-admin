@@ -1,8 +1,8 @@
 package com.whale.admin.config.apilog;
 
 import com.whale.admin.config.WebAutoConfiguration;
+import com.whale.admin.config.apilog.service.InfApiAccessLogCoreService;
 import com.whale.admin.filter.ApiAccessLogFilter;
-import com.whale.admin.web.infra.service.InfApiAccessLogService;
 import com.whale.framework.common.enums.WebFilterOrderEnum;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -21,8 +21,8 @@ public class ApiLogAutoConfiguration {
      */
     @Bean
     public FilterRegistrationBean<ApiAccessLogFilter> apiAccessLogFilter(@Value("${spring.application.name}") String applicationName,
-                                                                         InfApiAccessLogService infApiAccessLogService) {
-        ApiAccessLogFilter filter = new ApiAccessLogFilter(applicationName, infApiAccessLogService);
+                                                                         InfApiAccessLogCoreService infApiAccessLogCoreService) {
+        ApiAccessLogFilter filter = new ApiAccessLogFilter(applicationName, infApiAccessLogCoreService);
         return createFilterBean(filter, WebFilterOrderEnum.API_ACCESS_LOG_FILTER);
     }
 

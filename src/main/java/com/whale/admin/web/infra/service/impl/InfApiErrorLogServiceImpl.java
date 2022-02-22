@@ -1,16 +1,13 @@
 package com.whale.admin.web.infra.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
-import com.whale.admin.web.infra.convert.InfApiErrorLogCoreConvert;
-import com.whale.admin.web.infra.dto.ApiErrorLogCreateReqDTO;
-import com.whale.admin.web.infra.enums.InfApiErrorLogProcessStatusEnum;
+import com.whale.admin.config.apilog.service.enums.InfApiErrorLogProcessStatusEnum;
 import com.whale.admin.web.infra.service.InfApiErrorLogService;
 import com.whale.framework.repository.common.vo.PageResult;
 import com.whale.framework.repository.common.vo.infra.apierrorlog.InfApiErrorLogExportReqVO;
 import com.whale.framework.repository.common.vo.infra.apierrorlog.InfApiErrorLogPageReqVO;
 import com.whale.framework.repository.mapper.krplus.InfApiErrorLogMapper;
 import com.whale.framework.repository.model.krplus.InfApiErrorLog;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -57,14 +54,6 @@ public class InfApiErrorLogServiceImpl implements InfApiErrorLogService {
         // 标记处理
         apiErrorLogMapper.updateById(InfApiErrorLog.builder().id(id).processStatus(processStatus)
                 .processUserId(processUserId).processTime(new Date()).build());
-    }
-
-    @Override
-    @Async
-    public void createApiErrorLogAsync(ApiErrorLogCreateReqDTO createDTO) {
-        InfApiErrorLog apiErrorLog = InfApiErrorLogCoreConvert.INSTANCE.convert(createDTO);
-        apiErrorLog.setProcessStatus(InfApiErrorLogProcessStatusEnum.INIT.getStatus());
-        apiErrorLogMapper.insert(apiErrorLog);
     }
 
 }

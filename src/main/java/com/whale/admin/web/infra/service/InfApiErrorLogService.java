@@ -1,6 +1,5 @@
 package com.whale.admin.web.infra.service;
 
-import com.whale.admin.web.infra.dto.ApiErrorLogCreateReqDTO;
 import com.whale.framework.repository.common.vo.PageResult;
 import com.whale.framework.repository.common.vo.infra.apierrorlog.InfApiErrorLogExportReqVO;
 import com.whale.framework.repository.common.vo.infra.apierrorlog.InfApiErrorLogPageReqVO;
@@ -40,5 +39,4 @@ public interface InfApiErrorLogService {
      */
     void updateApiErrorLogProcess(Long id, Integer processStatus, Long processUserId);
 
-    void createApiErrorLogAsync(ApiErrorLogCreateReqDTO errorLog);
 }
