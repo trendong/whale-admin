@@ -1,11 +1,22 @@
 package com.whale.admin.exception;
 
+import cn.hutool.core.exceptions.ExceptionUtil;
+import cn.hutool.extra.servlet.ServletUtil;
+import com.whale.admin.web.infra.dto.ApiErrorLogCreateReqDTO;
+import com.whale.admin.web.infra.service.InfApiErrorLogService;
+import com.whale.framework.common.util.json.JsonUtils;
+import com.whale.framework.common.util.monitor.TracerUtils;
+import com.whale.framework.common.util.servlet.ServletUtils;
+import com.whale.framework.common.util.web.WebFrameworkUtils;
 import com.whale.framework.repository.common.exception.ServiceException;
 import com.whale.framework.repository.common.vo.CommonResult;
 import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -21,6 +32,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 import java.nio.file.AccessDeniedException;
+import java.util.Date;
 
 import static com.whale.framework.repository.common.exception.enums.GlobalErrorCodeConstants.*;
 
@@ -31,8 +43,13 @@ import static com.whale.framework.repository.common.exception.enums.GlobalErrorC
  */
 @RestControllerAdvice
 @AllArgsConstructor
-@Slf4j
 public class GlobalExceptionHandler {
+
+    private final static Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    private final String applicationName;
+
+    private final InfApiErrorLogService infApiErrorLogService;
 
     /**
      * 处理所有异常，主要是提供给 Filter 使用
@@ -86,7 +103,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     public CommonResult<?> missingServletRequestParameterExceptionHandler(MissingServletRequestParameterException ex) {
-        log.warn("[missingServletRequestParameterExceptionHandler]", ex);
+        logger.warn("[missingServletRequestParameterExceptionHandler]", ex);
         return CommonResult.error(BAD_REQUEST.getCode(), String.format("请求参数缺失:%s", ex.getParameterName()));
     }
 
@@ -97,7 +114,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public CommonResult<?> httpMessageNotReadableException(HttpMessageNotReadableException ex) {
-        log.warn("[httpMessageNotReadableException]", ex);
+        logger.warn("[httpMessageNotReadableException]", ex);
         return CommonResult.error(BAD_REQUEST.getCode(), String.format("请求参数类型错误:%s", ex.getMessage()));
     }
 
@@ -108,7 +125,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public CommonResult<?> methodArgumentTypeMismatchExceptionHandler(MethodArgumentTypeMismatchException ex) {
-        log.warn("[missingServletRequestParameterExceptionHandler]", ex);
+        logger.warn("[missingServletRequestParameterExceptionHandler]", ex);
         return CommonResult.error(BAD_REQUEST.getCode(), String.format("请求参数类型错误:%s", ex.getMessage()));
     }
 
@@ -117,7 +134,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public CommonResult<?> methodArgumentNotValidExceptionExceptionHandler(MethodArgumentNotValidException ex) {
-        log.warn("[methodArgumentNotValidExceptionExceptionHandler]", ex);
+        logger.warn("[methodArgumentNotValidExceptionExceptionHandler]", ex);
         FieldError fieldError = ex.getBindingResult().getFieldError();
         // 断言，避免告警
         assert fieldError != null;
@@ -129,7 +146,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BindException.class)
     public CommonResult<?> bindExceptionHandler(BindException ex) {
-        log.warn("[handleBindException]", ex);
+        logger.warn("[handleBindException]", ex);
         FieldError fieldError = ex.getFieldError();
         // 断言，避免告警
         assert fieldError != null;
@@ -141,7 +158,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = ConstraintViolationException.class)
     public CommonResult<?> constraintViolationExceptionHandler(ConstraintViolationException ex) {
-        log.warn("[constraintViolationExceptionHandler]", ex);
+        logger.warn("[constraintViolationExceptionHandler]", ex);
         ConstraintViolation<?> constraintViolation = ex.getConstraintViolations().iterator().next();
         return CommonResult.error(BAD_REQUEST.getCode(), String.format("请求参数不正确:%s", constraintViolation.getMessage()));
     }
@@ -151,7 +168,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = ValidationException.class)
     public CommonResult<?> validationException(ValidationException ex) {
-        log.warn("[constraintViolationExceptionHandler]", ex);
+        logger.warn("[constraintViolationExceptionHandler]", ex);
         // 无法拼接明细的错误信息，因为 Dubbo Consumer 抛出 ValidationException 异常时，是直接的字符串信息，且人类不可读
         return CommonResult.error(BAD_REQUEST);
     }
@@ -165,7 +182,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(NoHandlerFoundException.class)
     public CommonResult<?> noHandlerFoundExceptionHandler(NoHandlerFoundException ex) {
-        log.warn("[noHandlerFoundExceptionHandler]", ex);
+        logger.warn("[noHandlerFoundExceptionHandler]", ex);
         return CommonResult.error(NOT_FOUND.getCode(), String.format("请求地址不存在:%s", ex.getRequestURL()));
     }
 
@@ -176,7 +193,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public CommonResult<?> httpRequestMethodNotSupportedExceptionHandler(HttpRequestMethodNotSupportedException ex) {
-        log.warn("[httpRequestMethodNotSupportedExceptionHandler]", ex);
+        logger.warn("[httpRequestMethodNotSupportedExceptionHandler]", ex);
         return CommonResult.error(METHOD_NOT_ALLOWED.getCode(), String.format("请求方法不正确:%s", ex.getMessage()));
     }
 
@@ -185,7 +202,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = RequestNotPermitted.class)
     public CommonResult<?> requestNotPermittedExceptionHandler(HttpServletRequest req, RequestNotPermitted ex) {
-        log.warn("[requestNotPermittedExceptionHandler][url({}) 访问过于频繁]", req.getRequestURL(), ex);
+        logger.warn("[requestNotPermittedExceptionHandler][url({}) 访问过于频繁]", req.getRequestURL(), ex);
         return CommonResult.error(TOO_MANY_REQUESTS);
     }
 
@@ -196,8 +213,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = AccessDeniedException.class)
     public CommonResult<?> accessDeniedExceptionHandler(HttpServletRequest req, AccessDeniedException ex) {
-//        log.warn("[accessDeniedExceptionHandler][userId({}) 无法访问 url({})]", WebFrameworkUtils.getLoginUserId(req),
-//                req.getRequestURL(), ex);
+        logger.warn("[accessDeniedExceptionHandler][userId({}) 无法访问 url({})]", WebFrameworkUtils.getLoginUserId(req),
+                req.getRequestURL(), ex);
         return CommonResult.error(FORBIDDEN);
     }
 
@@ -208,7 +225,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = ServiceException.class)
     public CommonResult<?> serviceExceptionHandler(ServiceException ex) {
-        log.info("[serviceExceptionHandler]", ex);
+        logger.info("[serviceExceptionHandler]", ex);
         return CommonResult.error(ex.getCode(), ex.getMessage());
     }
 
@@ -217,9 +234,54 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     public CommonResult<?> defaultExceptionHandler(HttpServletRequest req, Throwable ex) {
-        log.error("[defaultExceptionHandler]", ex);
-        // todo 入库 插入异常日志
+        logger.error("[defaultExceptionHandler]", ex);
+        // 插入异常日志
+        this.createExceptionLog(req, ex);
+        // 返回 ERROR CommonResult
         return CommonResult.error(INTERNAL_SERVER_ERROR.getCode(), INTERNAL_SERVER_ERROR.getMsg());
+    }
+
+    private void createExceptionLog(HttpServletRequest req, Throwable e) {
+        // 插入错误日志
+        ApiErrorLogCreateReqDTO errorLog = new ApiErrorLogCreateReqDTO();
+        try {
+            // 初始化 errorLog
+            initExceptionLog(errorLog, req, e);
+            // 执行插入 errorLog
+            infApiErrorLogService.createApiErrorLogAsync(errorLog);
+        } catch (Throwable th) {
+            logger.error("[createExceptionLog][url({}) log({}) 发生异常]", req.getRequestURI(),  JsonUtils.toJsonString(errorLog), th);
+        }
+    }
+
+    private void initExceptionLog(ApiErrorLogCreateReqDTO errorLog, HttpServletRequest request, Throwable e) {
+        // 处理用户信息
+        errorLog.setUserId(WebFrameworkUtils.getLoginUserId(request));
+        errorLog.setUserType(WebFrameworkUtils.getLoginUserType(request));
+        // 设置异常字段
+        errorLog.setExceptionName(e.getClass().getName());
+        errorLog.setExceptionMessage(ExceptionUtil.getMessage(e));
+        errorLog.setExceptionRootCauseMessage(ExceptionUtil.getRootCauseMessage(e));
+        errorLog.setExceptionStackTrace(ExceptionUtils.getStackTrace(e));
+        StackTraceElement[] stackTraceElements = e.getStackTrace();
+        Assert.notEmpty(stackTraceElements, "异常 stackTraceElements 不能为空");
+        StackTraceElement stackTraceElement = stackTraceElements[0];
+        errorLog.setExceptionClassName(stackTraceElement.getClassName());
+        errorLog.setExceptionFileName(stackTraceElement.getFileName());
+        errorLog.setExceptionMethodName(stackTraceElement.getMethodName());
+        errorLog.setExceptionLineNumber(stackTraceElement.getLineNumber());
+        // 设置其它字段
+        errorLog.setTraceId(TracerUtils.getTraceId());
+        errorLog.setApplicationName(applicationName);
+        errorLog.setRequestUrl(request.getRequestURI());
+//        Map<String, Object> requestParams = MapUtil.<String, Object>builder()
+//                .put("query", ServletUtil.getParamMap(request))
+//                .put("body", ServletUtil.getBody(request)).build();
+//        errorLog.setRequestParams(JsonUtils.toJsonString(requestParams));
+        errorLog.setRequestMethod(request.getMethod());
+        errorLog.setUserAgent(ServletUtils.getUserAgent(request));
+        errorLog.setUserIp(ServletUtil.getClientIP(request));
+        errorLog.setExceptionTime(new Date());
     }
 
 }

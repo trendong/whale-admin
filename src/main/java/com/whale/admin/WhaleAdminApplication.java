@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @MapperScan(value = {"com.whale.framework.repository.mapper"})
-@SpringBootApplication(scanBasePackages="com.whale.*")
+@SpringBootApplication(scanBasePackages = {"com.whale.admin.web", "com.whale.admin.config"})
 public class WhaleAdminApplication {
 
     private static Logger logger = LoggerFactory.getLogger(WhaleAdminApplication.class);

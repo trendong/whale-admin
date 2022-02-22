@@ -4,8 +4,8 @@ import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.google.common.annotations.VisibleForTesting;
 import com.whale.admin.web.system.convert.SysRoleConvert;
-import com.whale.admin.web.system.enums.system.RoleCodeEnum;
-import com.whale.admin.web.system.enums.system.SysRoleTypeEnum;
+import com.whale.admin.web.system.enums.RoleCodeEnum;
+import com.whale.admin.web.system.enums.SysRoleTypeEnum;
 import com.whale.admin.web.system.vo.role.SysRoleCreateReqVO;
 import com.whale.admin.web.system.vo.role.SysRoleUpdateReqVO;
 import com.whale.admin.web.system.service.ISysRoleService;
@@ -27,7 +27,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import static com.whale.admin.web.system.enums.system.SysErrorCodeConstants.*;
+import static com.whale.admin.web.system.enums.SysErrorCodeConstants.*;
 
 
 @Service

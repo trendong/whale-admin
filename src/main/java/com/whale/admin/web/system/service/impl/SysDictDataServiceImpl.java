@@ -21,7 +21,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import static com.whale.admin.web.system.enums.system.SysErrorCodeConstants.*;
+import static com.whale.admin.web.system.enums.SysErrorCodeConstants.*;
 import static com.whale.framework.repository.common.exception.util.ServiceExceptionUtil.exception;
 
 /**

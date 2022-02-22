@@ -1,4 +1,4 @@
-package com.whale.admin.web.system.enums.system;
+package com.whale.admin.web.system.enums;
 
 import com.whale.framework.repository.common.exception.ErrorCode;
 

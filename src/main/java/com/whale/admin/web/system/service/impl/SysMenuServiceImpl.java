@@ -4,8 +4,8 @@ import com.baomidou.dynamic.datasource.annotation.DS;
 import com.google.common.annotations.VisibleForTesting;
 import com.whale.admin.common.util.CollectionUtils;
 import com.whale.admin.web.system.convert.SysMenuConvert;
-import com.whale.admin.web.system.enums.system.MenuIdEnum;
-import com.whale.admin.web.system.enums.system.MenuTypeEnum;
+import com.whale.admin.web.system.enums.MenuIdEnum;
+import com.whale.admin.web.system.enums.MenuTypeEnum;
 import com.whale.admin.web.system.service.ISysMenuService;
 import com.whale.admin.web.system.vo.menu.SysMenuCreateReqVO;
 import com.whale.admin.web.system.vo.menu.SysMenuUpdateReqVO;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.*;
 
-import static com.whale.admin.web.system.enums.system.SysErrorCodeConstants.*;
+import static com.whale.admin.web.system.enums.SysErrorCodeConstants.*;
 
 /**
  * 菜单 Service 实现

@@ -10,7 +10,7 @@ import com.whale.framework.common.util.json.JsonUtils;
 /**
  * Excel Json 转换器
  *
- * @author 芋道源码
+ * @author trendong
  */
 public class JsonConvert implements Converter<Object> {
 

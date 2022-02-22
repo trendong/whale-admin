@@ -1,4 +1,4 @@
-package com.whale.admin.web.system.enums.system;
+package com.whale.admin.web.system.enums;
 
 /**
  * System 字典类型的枚举类
@@ -8,5 +8,6 @@ package com.whale.admin.web.system.enums.system;
 public interface SysDictTypeConstants {
 
     String COMMON_STATUS = "sys_common_status"; // 系统状态
+    String USER_TYPE = "user_type"; // 用户类型
 
 }

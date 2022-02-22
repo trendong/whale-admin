@@ -84,14 +84,9 @@ public class SysRoleController {
     @GetMapping("/page")
     @ApiOperation("获得角色分页")
     public CommonResult<PageResult<SysRole>> getRolePage(SysRolePageReqVO reqVO) {
-        TypeReference<Set<Long>> typeReference = new TypeReference<Set<Long>>() {};
-        String test = "[102, 108, 109]";
-        Set<Long> longs = JsonUtils.parseObject(test, typeReference);
-        System.out.println(longs);
         logger.info("获得角色分页: {}", JsonUtils.toJsonString(reqVO));
         return success(iSysRoleService.getRolePage(reqVO));
     }
-
 
     @GetMapping("/list-simple")
     @ApiOperation(value = "获取角色精简信息列表", notes = "只包含被开启的角色，主要用于前端的下拉选项")
