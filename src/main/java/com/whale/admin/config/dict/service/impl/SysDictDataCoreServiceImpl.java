@@ -1,7 +1,6 @@
 package com.whale.admin.config.dict.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.google.common.collect.ImmutableTable;
 import com.whale.admin.WhaleAdminApplication;
 import com.whale.admin.config.dict.convert.SysDictDataCoreConvert;
