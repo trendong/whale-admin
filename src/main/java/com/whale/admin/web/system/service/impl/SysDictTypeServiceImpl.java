@@ -1,15 +1,14 @@
 package com.whale.admin.web.system.service.impl;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.google.common.annotations.VisibleForTesting;
 import com.whale.admin.web.system.convert.dict.SysDictTypeConvert;
 import com.whale.admin.web.system.service.ISysDictDataService;
 import com.whale.admin.web.system.service.ISysDictTypeService;
 import com.whale.admin.web.system.vo.dict.type.SysDictTypeCreateReqVO;
 import com.whale.admin.web.system.vo.dict.type.SysDictTypeUpdateReqVO;
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.system.dict.SysDictTypeExportReqVO;
-import com.whale.framework.repository.common.vo.system.dict.SysDictTypePageReqVO;
+import com.whale.framework.common.pojo.PageResult;
+import com.whale.framework.repository.vo.system.dict.SysDictTypeExportReqVO;
+import com.whale.framework.repository.vo.system.dict.SysDictTypePageReqVO;
 import com.whale.framework.repository.mapper.krplus.SysDictTypeMapper;
 import com.whale.framework.repository.model.krplus.SysDictType;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 import static com.whale.admin.web.system.enums.SysErrorCodeConstants.*;
-import static com.whale.framework.repository.common.exception.util.ServiceExceptionUtil.exception;
+import static com.whale.framework.common.exception.util.ServiceExceptionUtil.exception;
 
 /**
  * 字典类型 Service 实现类

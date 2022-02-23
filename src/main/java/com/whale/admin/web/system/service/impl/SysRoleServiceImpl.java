@@ -1,7 +1,6 @@
 package com.whale.admin.web.system.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.google.common.annotations.VisibleForTesting;
 import com.whale.admin.web.system.convert.SysRoleConvert;
 import com.whale.admin.web.system.enums.RoleCodeEnum;
@@ -10,10 +9,10 @@ import com.whale.admin.web.system.vo.role.SysRoleCreateReqVO;
 import com.whale.admin.web.system.vo.role.SysRoleUpdateReqVO;
 import com.whale.admin.web.system.service.ISysRoleService;
 import com.whale.framework.common.enums.CommonStatusEnum;
-import com.whale.framework.repository.common.exception.util.ServiceExceptionUtil;
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.system.role.SysRoleExportReqVO;
-import com.whale.framework.repository.common.vo.system.role.SysRolePageReqVO;
+import com.whale.framework.common.exception.util.ServiceExceptionUtil;
+import com.whale.framework.common.pojo.PageResult;
+import com.whale.framework.repository.vo.system.role.SysRoleExportReqVO;
+import com.whale.framework.repository.vo.system.role.SysRolePageReqVO;
 import com.whale.framework.repository.mapper.krplus.SysRoleMapper;
 import com.whale.framework.repository.model.krplus.SysRole;
 import org.springframework.lang.Nullable;

@@ -3,9 +3,9 @@ package com.whale.admin.web.system.service;
 
 import com.whale.admin.web.system.vo.dict.type.SysDictTypeCreateReqVO;
 import com.whale.admin.web.system.vo.dict.type.SysDictTypeUpdateReqVO;
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.system.dict.SysDictTypeExportReqVO;
-import com.whale.framework.repository.common.vo.system.dict.SysDictTypePageReqVO;
+import com.whale.framework.common.pojo.PageResult;
+import com.whale.framework.repository.vo.system.dict.SysDictTypeExportReqVO;
+import com.whale.framework.repository.vo.system.dict.SysDictTypePageReqVO;
 import com.whale.framework.repository.model.krplus.SysDictType;
 
 import java.util.List;

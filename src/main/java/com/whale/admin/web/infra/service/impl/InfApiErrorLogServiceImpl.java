@@ -1,11 +1,10 @@
 package com.whale.admin.web.infra.service.impl;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.whale.admin.config.apilog.service.enums.InfApiErrorLogProcessStatusEnum;
 import com.whale.admin.web.infra.service.InfApiErrorLogService;
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.infra.apierrorlog.InfApiErrorLogExportReqVO;
-import com.whale.framework.repository.common.vo.infra.apierrorlog.InfApiErrorLogPageReqVO;
+import com.whale.framework.common.pojo.PageResult;
+import com.whale.framework.repository.vo.infra.apierrorlog.InfApiErrorLogExportReqVO;
+import com.whale.framework.repository.vo.infra.apierrorlog.InfApiErrorLogPageReqVO;
 import com.whale.framework.repository.mapper.krplus.InfApiErrorLogMapper;
 import com.whale.framework.repository.model.krplus.InfApiErrorLog;
 import org.springframework.stereotype.Service;

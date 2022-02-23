@@ -4,8 +4,8 @@ import com.whale.admin.web.system.convert.SysMenuConvert;
 import com.whale.admin.web.system.service.ISysMenuService;
 import com.whale.admin.web.system.vo.menu.*;
 import com.whale.framework.common.enums.CommonStatusEnum;
-import com.whale.framework.repository.common.vo.CommonResult;
-import com.whale.framework.repository.common.vo.system.menu.SysMenuListReqVO;
+import com.whale.framework.common.pojo.CommonResult;
+import com.whale.framework.repository.vo.system.menu.SysMenuListReqVO;
 import com.whale.framework.repository.model.krplus.SysMenu;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -17,7 +17,8 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.Comparator;
 import java.util.List;
-import static com.whale.framework.repository.common.vo.CommonResult.success;
+
+import static com.whale.framework.common.pojo.CommonResult.success;
 
 @Api(tags = "菜单")
 @RestController

@@ -1,8 +1,8 @@
 package com.whale.admin.web.infra.service;
 
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.infra.apiaccesslog.InfApiAccessLogExportReqVO;
-import com.whale.framework.repository.common.vo.infra.apiaccesslog.InfApiAccessLogPageReqVO;
+import com.whale.framework.common.pojo.PageResult;
+import com.whale.framework.repository.vo.infra.apiaccesslog.InfApiAccessLogExportReqVO;
+import com.whale.framework.repository.vo.infra.apiaccesslog.InfApiAccessLogPageReqVO;
 import com.whale.framework.repository.model.krplus.InfApiAccessLog;
 
 import java.util.List;

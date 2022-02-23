@@ -1,6 +1,5 @@
 package com.whale.admin.web.system.service.impl;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.google.common.annotations.VisibleForTesting;
 import com.whale.admin.common.util.CollectionUtils;
 import com.whale.admin.web.system.convert.SysMenuConvert;
@@ -9,8 +8,8 @@ import com.whale.admin.web.system.enums.MenuTypeEnum;
 import com.whale.admin.web.system.service.ISysMenuService;
 import com.whale.admin.web.system.vo.menu.SysMenuCreateReqVO;
 import com.whale.admin.web.system.vo.menu.SysMenuUpdateReqVO;
-import com.whale.framework.repository.common.exception.util.ServiceExceptionUtil;
-import com.whale.framework.repository.common.vo.system.menu.SysMenuListReqVO;
+import com.whale.framework.common.exception.util.ServiceExceptionUtil;
+import com.whale.framework.repository.vo.system.menu.SysMenuListReqVO;
 import com.whale.framework.repository.mapper.krplus.SysMenuMapper;
 import com.whale.framework.repository.model.krplus.SysMenu;
 import org.springframework.stereotype.Service;

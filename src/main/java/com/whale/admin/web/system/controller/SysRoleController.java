@@ -1,17 +1,16 @@
 package com.whale.admin.web.system.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.whale.admin.common.util.ExcelUtils;
 import com.whale.admin.web.system.convert.SysRoleConvert;
 import com.whale.admin.web.system.service.ISysRoleService;
 import com.whale.admin.web.system.vo.role.*;
 import com.whale.framework.common.enums.CommonStatusEnum;
+import com.whale.framework.common.pojo.CommonResult;
+import com.whale.framework.common.pojo.PageResult;
 import com.whale.framework.common.util.json.JsonUtils;
 import com.whale.framework.operatelog.core.annotations.OperateLog;
-import com.whale.framework.repository.common.vo.CommonResult;
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.system.role.SysRoleExportReqVO;
-import com.whale.framework.repository.common.vo.system.role.SysRolePageReqVO;
+import com.whale.framework.repository.vo.system.role.SysRoleExportReqVO;
+import com.whale.framework.repository.vo.system.role.SysRolePageReqVO;
 import com.whale.framework.repository.model.krplus.SysRole;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -27,13 +26,12 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.whale.framework.common.pojo.CommonResult.success;
 import static com.whale.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
-import static com.whale.framework.repository.common.vo.CommonResult.success;
 
 @Api(tags = "角色")
 @RestController

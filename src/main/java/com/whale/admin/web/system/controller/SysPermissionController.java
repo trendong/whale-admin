@@ -4,7 +4,7 @@ import com.whale.admin.web.system.service.ISysPermissionService;
 import com.whale.admin.web.system.vo.permission.SysPermissionAssignRoleDataScopeReqVO;
 import com.whale.admin.web.system.vo.permission.SysPermissionAssignRoleMenuReqVO;
 import com.whale.admin.web.system.vo.permission.SysPermissionAssignUserRoleReqVO;
-import com.whale.framework.repository.common.vo.CommonResult;
+import com.whale.framework.common.pojo.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.Set;
 
-import static com.whale.framework.repository.common.vo.CommonResult.success;
+import static com.whale.framework.common.pojo.CommonResult.success;
+
 
 /**
  * 权限 Controller，提供赋予用户、角色的权限的 API 接口

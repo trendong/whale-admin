@@ -3,7 +3,7 @@ package com.whale.admin.web.system.service;
 
 import com.whale.admin.web.system.vo.menu.SysMenuCreateReqVO;
 import com.whale.admin.web.system.vo.menu.SysMenuUpdateReqVO;
-import com.whale.framework.repository.common.vo.system.menu.SysMenuListReqVO;
+import com.whale.framework.repository.vo.system.menu.SysMenuListReqVO;
 import com.whale.framework.repository.model.krplus.SysMenu;
 
 import java.util.Collection;

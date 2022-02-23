@@ -1,6 +1,6 @@
 package com.whale.admin.web.system.enums;
 
-import com.whale.framework.repository.common.exception.ErrorCode;
+import com.whale.framework.common.exception.ErrorCode;
 
 /**
  * System 错误码枚举类

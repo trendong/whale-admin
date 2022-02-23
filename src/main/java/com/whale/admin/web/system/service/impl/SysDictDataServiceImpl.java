@@ -1,6 +1,5 @@
 package com.whale.admin.web.system.service.impl;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.google.common.annotations.VisibleForTesting;
 import com.whale.admin.web.system.convert.dict.SysDictDataConvert;
 import com.whale.admin.web.system.service.ISysDictDataService;
@@ -8,9 +7,9 @@ import com.whale.admin.web.system.service.ISysDictTypeService;
 import com.whale.admin.web.system.vo.dict.data.SysDictDataCreateReqVO;
 import com.whale.admin.web.system.vo.dict.data.SysDictDataUpdateReqVO;
 import com.whale.framework.common.enums.CommonStatusEnum;
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.system.dict.SysDictDataExportReqVO;
-import com.whale.framework.repository.common.vo.system.dict.SysDictDataPageReqVO;
+import com.whale.framework.common.pojo.PageResult;
+import com.whale.framework.repository.vo.system.dict.SysDictDataExportReqVO;
+import com.whale.framework.repository.vo.system.dict.SysDictDataPageReqVO;
 import com.whale.framework.repository.mapper.krplus.SysDictDataMapper;
 import com.whale.framework.repository.model.krplus.SysDictData;
 import com.whale.framework.repository.model.krplus.SysDictType;
@@ -22,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.whale.admin.web.system.enums.SysErrorCodeConstants.*;
-import static com.whale.framework.repository.common.exception.util.ServiceExceptionUtil.exception;
+import static com.whale.framework.common.exception.util.ServiceExceptionUtil.exception;
 
 /**
  * 字典数据 Service 实现类

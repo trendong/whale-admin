@@ -1,7 +1,7 @@
 package com.whale.admin.web.system.convert.dict;
 
 import com.whale.admin.web.system.vo.dict.type.*;
-import com.whale.framework.repository.common.vo.PageResult;
+import com.whale.framework.common.pojo.PageResult;
 import com.whale.framework.repository.model.krplus.SysDictType;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

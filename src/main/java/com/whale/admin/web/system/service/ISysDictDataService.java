@@ -2,9 +2,9 @@ package com.whale.admin.web.system.service;
 
 import com.whale.admin.web.system.vo.dict.data.SysDictDataCreateReqVO;
 import com.whale.admin.web.system.vo.dict.data.SysDictDataUpdateReqVO;
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.system.dict.SysDictDataExportReqVO;
-import com.whale.framework.repository.common.vo.system.dict.SysDictDataPageReqVO;
+import com.whale.framework.common.pojo.PageResult;
+import com.whale.framework.repository.vo.system.dict.SysDictDataExportReqVO;
+import com.whale.framework.repository.vo.system.dict.SysDictDataPageReqVO;
 import com.whale.framework.repository.model.krplus.SysDictData;
 
 import java.util.Date;

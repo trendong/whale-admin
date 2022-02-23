@@ -2,7 +2,7 @@ package com.whale.admin.web.infra.convert;
 
 import com.whale.admin.web.infra.vo.apiaccesslog.InfApiAccessLogExcelVO;
 import com.whale.admin.web.infra.vo.apiaccesslog.InfApiAccessLogRespVO;
-import com.whale.framework.repository.common.vo.PageResult;
+import com.whale.framework.common.pojo.PageResult;
 import com.whale.framework.repository.model.krplus.InfApiAccessLog;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

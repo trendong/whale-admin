@@ -1,10 +1,10 @@
 package com.whale.admin.web.system.service;
 
 import com.whale.admin.web.system.vo.role.SysRoleCreateReqVO;
-import com.whale.framework.repository.common.vo.system.role.SysRoleExportReqVO;
+import com.whale.framework.common.pojo.PageResult;
+import com.whale.framework.repository.vo.system.role.SysRoleExportReqVO;
 import com.whale.admin.web.system.vo.role.SysRoleUpdateReqVO;
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.system.role.SysRolePageReqVO;
+import com.whale.framework.repository.vo.system.role.SysRolePageReqVO;
 import com.whale.framework.repository.model.krplus.SysRole;
 import org.springframework.lang.Nullable;
 

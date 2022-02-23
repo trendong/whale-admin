@@ -4,10 +4,10 @@ import com.whale.admin.common.util.ExcelUtils;
 import com.whale.admin.web.system.convert.dict.SysDictDataConvert;
 import com.whale.admin.web.system.service.ISysDictDataService;
 import com.whale.admin.web.system.vo.dict.data.*;
-import com.whale.framework.repository.common.vo.CommonResult;
-import com.whale.framework.repository.common.vo.PageResult;
-import com.whale.framework.repository.common.vo.system.dict.SysDictDataExportReqVO;
-import com.whale.framework.repository.common.vo.system.dict.SysDictDataPageReqVO;
+import com.whale.framework.common.pojo.CommonResult;
+import com.whale.framework.common.pojo.PageResult;
+import com.whale.framework.repository.vo.system.dict.SysDictDataExportReqVO;
+import com.whale.framework.repository.vo.system.dict.SysDictDataPageReqVO;
 import com.whale.framework.repository.model.krplus.SysDictData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
-import static com.whale.framework.repository.common.vo.CommonResult.success;
+import static com.whale.framework.common.pojo.CommonResult.success;
 
 @Api(tags = "字典数据")
 @RestController

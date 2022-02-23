@@ -5,12 +5,12 @@ import cn.hutool.core.map.MapUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.whale.admin.config.apilog.service.InfApiErrorLogCoreService;
 import com.whale.admin.config.apilog.service.dto.ApiErrorLogCreateReqDTO;
+import com.whale.framework.common.exception.ServiceException;
+import com.whale.framework.common.pojo.CommonResult;
 import com.whale.framework.common.util.json.JsonUtils;
 import com.whale.framework.common.util.monitor.TracerUtils;
 import com.whale.framework.common.util.servlet.ServletUtils;
 import com.whale.framework.common.util.web.WebFrameworkUtils;
-import com.whale.framework.repository.common.exception.ServiceException;
-import com.whale.framework.repository.common.vo.CommonResult;
 import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -36,7 +36,7 @@ import java.nio.file.AccessDeniedException;
 import java.util.Date;
 import java.util.Map;
 
-import static com.whale.framework.repository.common.exception.enums.GlobalErrorCodeConstants.*;
+import static com.whale.framework.common.exception.enums.GlobalErrorCodeConstants.*;
 
 /**
  * 全局异常处理器，将 Exception 转换成 CommonResult + 对应的异常编号

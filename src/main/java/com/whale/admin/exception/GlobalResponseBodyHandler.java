@@ -1,6 +1,6 @@
 package com.whale.admin.exception;
 
-import com.whale.framework.repository.common.vo.CommonResult;
+import com.whale.framework.common.pojo.CommonResult;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
