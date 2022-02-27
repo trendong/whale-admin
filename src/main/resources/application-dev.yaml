@@ -64,13 +64,6 @@ spring:
       port: 27017
       database: krplus
       authentication-database: admin
-    # elasticsearch配置
-    elasticsearch:
-      client:
-        reactive:
-          endpoints: 192.168.2.13:9200
-          username: elasticsearch_36kr_test
-          password:
   # 邮箱配置
   mail:
     host: smtp.qq.com

@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author trendong
  */
-
 @MapperScan(value = {"com.whale.framework.repository.mapper"})
 @SpringBootApplication(scanBasePackages = {"com.whale.admin.web", "com.whale.admin.config"})
 public class WhaleAdminApplication {
