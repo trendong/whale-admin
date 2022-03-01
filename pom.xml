@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <artifactId>whale-tools</artifactId>
-        <groupId>com.whale</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.6</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -14,6 +14,10 @@
     <artifactId>whale-admin</artifactId>
 
     <properties>
+        <revision>1.0-SNAPSHOT</revision>
+        <whale-framework-plus.version>1.0-SNAPSHOT</whale-framework-plus.version>
+
+        <lombok.version>1.18.12</lombok.version>
         <resilience4j-ratelimiter.version>1.7.0</resilience4j-ratelimiter.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <easyexcel.verion>2.2.7</easyexcel.verion>
@@ -27,6 +31,7 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -56,19 +61,24 @@
 
         <dependency>
             <groupId>com.whale</groupId>
-            <artifactId>whale-common</artifactId>
+            <artifactId>whale-framework-plus</artifactId>
+            <version>${whale-framework-plus.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.whale</groupId>
-            <artifactId>whale-framework-plus</artifactId>
+            <artifactId>whale-common</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.whale</groupId>
             <artifactId>whale-spring-boot-starter-biz-dict</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.whale</groupId>
             <artifactId>whale-spring-boot-stater-biz-operatelog</artifactId>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>

@@ -39,7 +39,7 @@ import static com.whale.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
 @Validated
 public class SysRoleController {
 
-    private static Logger logger = LoggerFactory.getLogger(SysRoleController.class);
+    private static final Logger logger = LoggerFactory.getLogger(SysRoleController.class);
 
     @Resource
     private ISysRoleService iSysRoleService;

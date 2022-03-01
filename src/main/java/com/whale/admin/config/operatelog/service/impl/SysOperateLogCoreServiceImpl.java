@@ -23,7 +23,7 @@ import static com.whale.framework.common.constant.WhaleConstants.RESULT_MAX_LENG
 @Service
 public class SysOperateLogCoreServiceImpl implements ISysOperateLogCoreService {
 
-    private static Logger logger = LoggerFactory.getLogger(WhaleAdminApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(WhaleAdminApplication.class);
 
     @Resource
     private SysOperateLogMapper operateLogMapper;

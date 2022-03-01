@@ -27,7 +27,7 @@ import java.util.List;
 @Service
 public class SysDictDataCoreServiceImpl implements ISysDictDataCoreService {
 
-    private static Logger logger = LoggerFactory.getLogger(WhaleAdminApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(WhaleAdminApplication.class);
 
     /**
      * 定时执行 {@link #schedulePeriodicRefresh()} 的周期

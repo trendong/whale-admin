@@ -15,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = {"com.whale.admin.web", "com.whale.admin.config"})
 public class WhaleAdminApplication {
 
-    private static Logger logger = LoggerFactory.getLogger(WhaleAdminApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(WhaleAdminApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(WhaleAdminApplication.class, args);
