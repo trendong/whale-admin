@@ -1,9 +1,9 @@
 package com.whale.admin.web.system.vo.dict.data;
 
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.whale.admin.excel.annotations.DictFormat;
-import com.whale.admin.excel.core.DictConvert;
 import com.whale.admin.web.system.enums.SysDictTypeConstants;
+import com.whale.framework.excel.core.annotations.DictFormat;
+import com.whale.framework.excel.core.convert.DictConvert;
 import lombok.Data;
 
 /**

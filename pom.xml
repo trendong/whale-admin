@@ -60,6 +60,10 @@
             <groupId>com.whale</groupId>
             <artifactId>whale-spring-boot-stater-biz-operatelog</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.whale</groupId>
+            <artifactId>whale-spring-boot-stater-excel</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
