@@ -3,26 +3,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.6</version>
+        <artifactId>whale-tools</artifactId>
+        <groupId>com.whale</groupId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <name>whale-admin</name>
     <packaging>jar</packaging>
     <artifactId>whale-admin</artifactId>
+    <name>${artifactId}</name>
 
     <properties>
-        <revision>1.0-SNAPSHOT</revision>
         <whale-framework-plus.version>1.0-SNAPSHOT</whale-framework-plus.version>
 
-        <lombok.version>1.18.12</lombok.version>
-        <resilience4j-ratelimiter.version>1.7.0</resilience4j-ratelimiter.version>
-        <mapstruct.version>1.4.2.Final</mapstruct.version>
-        <easyexcel.verion>2.2.7</easyexcel.verion>
-        <skywalking.version>8.7.0</skywalking.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
     </properties>
 
     <dependencies>
@@ -35,28 +28,23 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
-            <version>${mapstruct.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.skywalking</groupId>
             <artifactId>apm-toolkit-logback-1.x</artifactId>
-            <version>${skywalking.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-ratelimiter</artifactId>
-            <version>${resilience4j-ratelimiter.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>${easyexcel.verion}</version>
         </dependency>
 
         <dependency>
@@ -64,21 +52,13 @@
             <artifactId>whale-framework-plus</artifactId>
             <version>${whale-framework-plus.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.whale</groupId>
-            <artifactId>whale-common</artifactId>
-            <version>${revision}</version>
-        </dependency>
         <dependency>
             <groupId>com.whale</groupId>
             <artifactId>whale-spring-boot-starter-biz-dict</artifactId>
-            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.whale</groupId>
             <artifactId>whale-spring-boot-stater-biz-operatelog</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <dependency>
